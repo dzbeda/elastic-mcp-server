@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.2
+    container_name: elasticsearch
+    networks: [mcpnet]
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+
+  init-data:
+    image: appropriate/curl
+    networks: [mcpnet]
+    depends_on: [elasticsearch]
+    entrypoint: >-
+      sh -c '
+        echo "Waiting for Elasticsearch...";
+        until curl -s http://elasticsearch:9200/_cluster/health | grep -Eq "\"status\":\"(yellow|green)\""; do
+          sleep 2;
+        done;
+        echo "Elasticsearch is ready. Creating index and injecting data...";
+        curl -X PUT "http://elasticsearch:9200/cars" -H "Content-Type: application/json" -d '\''{"settings":{"number_of_shards":1,"number_of_replicas":0}}'\'' &&
+        curl -X POST "http://elasticsearch:9200/cars/_doc/1" -H "Content-Type: application/json" -d '\''{"make":"Toyota","model":"Corolla","year":2020}'\'' &&
+        curl -X POST "http://elasticsearch:9200/cars/_doc/2" -H "Content-Type: application/json" -d '\''{"make":"Tesla","model":"Model 3","year":2022}'\'' &&
+        curl -X POST "http://elasticsearch:9200/cars/_doc/3" -H "Content-Type: application/json" -d '\''{"make":"Ford","model":"Mustang","year":2018}'\'' &&
+        echo "Data injected."
+      '
+
+volumes:
+  esdata:
+
+networks:
+  mcpnet:
+    external: true   # use the already-created network you showed in `docker network ls`
