@@ -1,3 +1,5 @@
+<img src="./elastic-mcp.png" alt="welcome Image" width="500" height="300">
+
 # Query Elasticsearch with Natural Language using LLM, MCP, and Ollama
 
 This repository contains everything you need to set up a local environment that lets you **query and explore Elasticsearch using plain human language**. The stack includes **Ollama** (local LLM), an **MCP Client**, the **Elasticsearch MCP Server** (Docker), and an **Elasticsearch DB** with sample data. The setup is designed to run on **WSL2/Ubuntu** or any Linux host with Docker.
