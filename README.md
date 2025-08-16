@@ -44,14 +44,12 @@ https://david-dudu-zbeda.medium.com/query-elasticsearch-with-natural-language-us
   Prebuilt MCP client host binary (executable launcher)
 - `./mcpclient/elastic-mcp-config.conf`  
   MCP client configuration that starts the **Elasticsearch MCP Server** Docker image and connects it to your Elasticsearch
-- *(optional)* `extras/`  
-  Notes, troubleshooting, and advanced prompts
 
 ---
 
 ## Connect on LinkedIn and Medium
 
 - LinkedIn: https://www.linkedin.com/in/davidzbeda  
-- Medium: https://medium.com/@dudu.zbeda_13698
+- Medium: [https://medium.com/@dudu.zbeda_13698](https://medium.com/@david-dudu-zbeda)
 
 **David (Dudu) Zbeda**
