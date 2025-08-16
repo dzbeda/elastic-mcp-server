@@ -1,4 +1,4 @@
-<img src="./elastic-mcp.png" alt="welcome Image" width="500" height="300">
+<img src="./elastic-mcp.png" alt="welcome Image" width="800" height="600">
 
 # Query Elasticsearch with Natural Language using LLM, MCP, and Ollama
 
