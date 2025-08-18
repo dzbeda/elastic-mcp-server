@@ -32,6 +32,8 @@ services:
         curl -X POST "http://elasticsearch:9200/cars/_doc/1" -H "Content-Type: application/json" -d '\''{"make":"Toyota","model":"Corolla","year":2020}'\'' &&
         curl -X POST "http://elasticsearch:9200/cars/_doc/2" -H "Content-Type: application/json" -d '\''{"make":"Tesla","model":"Model 3","year":2022}'\'' &&
         curl -X POST "http://elasticsearch:9200/cars/_doc/3" -H "Content-Type: application/json" -d '\''{"make":"Ford","model":"Mustang","year":2018}'\'' &&
+        curl -X POST "http://elasticsearch:9200/cars/_doc/4" -H "Content-Type: application/json" -d '\''{"make":"Ford","model":"Escort","year":1985}'\'' &&
+        curl -X POST "http://elasticsearch:9200/cars/_doc/5" -H "Content-Type: application/json" -d '\''{"make":"Suzuki","model":"CrossOver","year":2022}'\'' &&
         echo "Data injected."
       '
 
